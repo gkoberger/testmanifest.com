@@ -1,6 +1,6 @@
 <?php
 // First, split it up and get the root
-$subdomain = $_GET['subdomain'];
+$subdomain = in_array("subdomain", $_GET) ? $_GET['subdomain'] : "";
 $subdomain_split = explode($subdomain, '-');
 $subdomain_base = $subdomain_split[0];
 
@@ -16,8 +16,10 @@ if($_GET['file'] == "manifest.webapp") {
     include "words.php";
     $manifest = $animals[0] . ".testmanifest.com";
 ?>
+<div style="text-align: center;">
     <h1>Your random manifest is...</h1>
-    <input type="text" value="<?= $manifest ?>">
+    <input type="text" value="<?= $manifest ?>"><br>
     (Or, just use any subdomain)
+</div>
 <?
 }
