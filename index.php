@@ -1,11 +1,13 @@
 <?php
 // First, split it up and get the root
-$subdomain = in_array("subdomain", $_GET) ? $_GET['subdomain'] : "";
-$subdomain_split = explode($subdomain, '-');
-$subdomain_base = $subdomain_split[0];
+$subdomain = $_GET['subdomain'];
+if($subdomain) {
+    $subdomain_split = explode($subdomain, '-');
+    $subdomain_base = $subdomain_split[0];
+}
 
 // Output a basic manifest
-if($_GET['file'] == "manifest.webapp") {
+if($_GET['file'] == "manifest.webapp" && $subdomain) {
     header("Content-Type: application/x-web-app-manifest+json");
 
     $data = array('name'=>'Test App ('.$subdomain.')',
