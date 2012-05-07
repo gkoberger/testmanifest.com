@@ -1,7 +1,7 @@
 <?php
 // First, split it up and get the root
-$subdomain_full = explode($_GET['subdomain'], '-');
-$subdomain = $subdomain[0];
+$subdomain = $_GET['subdomain'];
+$subdomain_base = explode($_GET['subdomain'], '-')[0];
 
 // Output a basic manifest
 if($_GET['file'] == "manifest.webapp") {
