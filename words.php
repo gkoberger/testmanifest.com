@@ -10,7 +10,6 @@ $animals = array(
    'ape',
    'argali',
    'armadillo',
-   'ass',
    'baboon',
    'badger',
    'basilisk',
