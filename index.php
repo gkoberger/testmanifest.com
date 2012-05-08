@@ -24,7 +24,7 @@ if($subdomain) {
             'icons'=>array('16'=>'http://testmanifest.com/icon-16.png',
                            '48'=>'http://testmanifest.com/icon-48.png',
                            '128'=>'http://testmanifest.com/icon-128.png'),
-            'installs_allowed_from'=>array('https://marketplace.mozilla.org'),
+            'installs_allowed_from'=>array('*'),
             'developer'=>array('name'=>'Gregory Koberger', 'url'=>'http://gkoberger.net'),
             'default_locale'=>'en');
 
@@ -46,7 +46,12 @@ if($subdomain) {
         }
 
     ?>
-        <button>Install!</button>
+        <button id="install">Install!</button>
+        <script>
+        document.getElementById('install').onclick = function() {
+            navigator.mozApps.install("http://<?=$subdomain?>.testmanifest.com/manifest.webapp");
+        };
+        </script>
     <?
         $json = str_replace("textarea", "text-area", $json);
         echo "<form method=\"POST\">";
