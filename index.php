@@ -65,15 +65,25 @@ if($subdomain) {
 } else {
     include "words.php";
     $random = rand(1000, 9999);
-    $manifest = "http://" . $animals[rand(0, count($animals) -1)] . $random . ".testmanifest.com/manifest.webapp";
+    $domain = "http://" . $animals[rand(0, count($animals) -1)] . $random . ".testmanifest.com";
+    $manifest = $domain . "/manifest.webapp";
 ?>
 <div style="text-align: center;">
     <h1>Your random manifest is&hellip;</h1>
-    <input type="text" id="thingy" value="<?= $manifest ?>"><br>
+    <input type="text" id="thingy" value="<?= $manifest ?>">
+    <a href="<?= $domain ?>">edit</a> &middot; <a href="#" id="install">install</a>
+    <br>
     <div style="color: #999; font-size: 0.9em; padding-top: 10px;">
     Absolutely any subdomain will work &middot; <a href="/">get another</a>
     </div>
 </div>
+<script src="https://myapps.mozillalabs.com/jsapi/include.js"></script>
+<script>
+document.getElementById('install').onclick = function() {
+    navigator.mozApps.install('<?= $manifest ?>');
+    return false;
+};
+</script>
 <style>
     body {
         font-family: helvetica, arial;
