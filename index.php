@@ -7,7 +7,7 @@ if($subdomain) {
 }
 
 // Output a basic manifest
-if($_GET['file'] == "manifest.webapp" && $subdomain) {
+if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $subdomain) {
     header("Content-Type: application/x-web-app-manifest+json");
 
     $data = array('name'=>'Test App ('.$subdomain.')',
@@ -16,10 +16,11 @@ if($_GET['file'] == "manifest.webapp" && $subdomain) {
     echo json_encode($data);
 } else {
     include "words.php";
-    $manifest = $animals[0] . ".testmanifest.com";
+    $random = rand(1000, 9999);
+    $manifest = "http://" . $animals[rand(0, count($animals))] . $random . ".testmanifest.com/manifest.webapp";
 ?>
 <div style="text-align: center;">
-    <h1>Your random manifest is...</h1>
+    <h1>Your random manifest is&hellip;</h1>
     <input type="text" value="<?= $manifest ?>"><br>
     (Or, just use any subdomain)
 </div>
