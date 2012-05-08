@@ -17,7 +17,7 @@ if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $
 } else {
     include "words.php";
     $random = rand(1000, 9999);
-    $manifest = "http://" . $animals[rand(0, count($animals))] . $random . ".testmanifest.com/manifest.webapp";
+    $manifest = "http://" . $animals[rand(0, count($animals) -1)] . $random . ".testmanifest.com/manifest.webapp";
 ?>
 <div style="text-align: center;">
     <h1>Your random manifest is&hellip;</h1>
