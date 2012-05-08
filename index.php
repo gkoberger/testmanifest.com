@@ -24,7 +24,10 @@ if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $
         'developer'=>array('name'=>'Gregory Koberger', 'url'=>'http://gkoberger.net'),
         'default_locale'=>'en');
 
-    echo indent(json_encode($data));
+    echo "<form method=\"POST\">";
+    echo "<textarea>" .indent(json_encode($data)) . "</textarea>";
+    echo "<input type='submit' value='Save'>";
+    echo "</form>";
 
     /*
     $myFile = $_POST['subdomain'] . ".json";
