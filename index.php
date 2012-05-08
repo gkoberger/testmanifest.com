@@ -32,8 +32,10 @@ if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $
         padding: 8px;
         width: 500px;
     }
-    document.getElementById('thingy').focus();
-    document.getElementById('thingy').select();
 </style>
+<script>
+document.getElementById('thingy').focus();
+document.getElementById('thingy').select();
+</script>
 <?
 }
