@@ -8,7 +8,7 @@ if($subdomain) {
 
 // Output a basic manifest
 if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $subdomain) {
-    if(strpos($_SERVER["HTTP_USER_AGENT"], "Python")) {
+    if(strpos($_SERVER["HTTP_USER_AGENT"], "Python") !== false) {
         header("Content-Type: application/x-web-app-manifest+json");
     }
 
