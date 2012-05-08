@@ -55,11 +55,9 @@ if($subdomain) {
     $manifest = $domain . "/manifest.webapp";
     $output = "template_main.php";
 }
-
-<?
-    if($output) {
-        include "header.php";
-        include $output;
-        include "footer.php";
-    }
+if($output) {
+    include "header.php";
+    include $output;
+    include "footer.php";
+}
 ?>
