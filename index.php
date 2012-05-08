@@ -1,5 +1,6 @@
 <?php
 include "indent.php";
+include "words.php";
 
 // First, split it up and get the root
 $subdomain = $_GET['subdomain'];
@@ -35,6 +36,7 @@ if($subdomain) {
         header("Content-Type: application/x-web-app-manifest+json");
         $json = str_replace("{subdomain}", $subdomain, $json);
         echo $json;
+        exit();
     } else {
         if(!empty($_POST)) {
             $myFile = "manifests/" . $subdomain_base . ".json";
@@ -44,70 +46,20 @@ if($subdomain) {
             fclose($fh);
             header("Location: /manifest.webapp");
         }
-
-    ?>
-        <button id="install">Install!</button>
-        <script src="https://myapps.mozillalabs.com/jsapi/include.js"></script>
-        <script>
-        document.getElementById('install').onclick = function() {
-            navigator.mozApps.install("http://<?=$subdomain?>.testmanifest.com/manifest.webapp");
-        };
-        </script>
-    <?
+        $output = "template_edit.php";
         $json = str_replace("textarea", "text-area", $json);
-        echo "<form method=\"POST\">";
-        echo "<input type='submit' value='Save'><br>";
-        echo "<textarea name='manifest' style='height: 400px; width: 600px; border: 1px solid #ccc;'>";
-        echo $json . "</textarea>";
-        echo "<br><input type='submit' value='Save'>";
-        echo "</form>";
     }
 } else {
-    include "words.php";
     $random = rand(1000, 9999);
     $domain = "http://" . $animals[rand(0, count($animals) -1)] . $random . ".testmanifest.com";
     $manifest = $domain . "/manifest.webapp";
-?>
-<div style="text-align: center;">
-    <h1>Your random manifest is&hellip;</h1>
-    <input type="text" id="thingy" value="<?= $manifest ?>">
-    <br>
-    <a href="<?= $domain ?>">edit</a> &middot; <a href="#" id="install">install</a>
-    &middot; <a href="/">get another</a>
-    <br>
-    <div style="color: #999; font-size: 0.9em; padding-top: 10px;">
-    Absolutely any subdomain will work
-    </div>
-</div>
-<script src="https://myapps.mozillalabs.com/jsapi/include.js"></script>
-<script>
-document.getElementById('install').onclick = function() {
-    navigator.mozApps.install('<?= $manifest ?>');
-    return false;
-};
-</script>
-<style>
-    body {
-        font-family: helvetica, arial;
-    }
-    input {
-        border: 1px solid #BBBBBB;
-        border-radius: 5px 5px 5px 5px;
-        box-shadow: 0 3px #EEEEEE inset;
-        padding: 8px;
-        width: 500px;
-        text-align: center;
-    }
-    a, a:visited {
-        color: #000;
-    }
-    a:hover {
-        color: #555;
-    }
-</style>
-<script>
-document.getElementById('thingy').focus();
-document.getElementById('thingy').select();
-</script>
-<?
+    $output = "template_main.php";
 }
+
+<?
+    if($output) {
+        include "header.php";
+        include $output;
+        include "footer.php";
+    }
+?>
