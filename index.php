@@ -19,9 +19,7 @@ if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $
         header("Location: /manifest.webapp");
     }
 
-    if(strpos($_SERVER["HTTP_USER_AGENT"], "Python") !== false) {
-        header("Content-Type: application/x-web-app-manifest+json");
-    }
+    $is_python = strpos($_SERVER["HTTP_USER_AGENT"], "Python") !== false;
 
     $filename = "manifests/" . $subdomain_base . ".json";
     if(file_exists($filename)) {
@@ -44,16 +42,17 @@ if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $
         $json = indent(json_encode($data));
     }
 
-    $json = str_replace("{subdomain}", $subdomain, $json);
-    $json = str_replace("textarea", "text-area", $json);
-
-    echo "<form method=\"POST\">";
-        echo "<textarea name='manifest'>" . $json . "</textarea>";
-        echo "<input type='submit' value='Save'>";
-    echo "</form>";
-
-    /*
-     */
+    if($is_python) {
+        header("Content-Type: application/x-web-app-manifest+json");
+        $json = str_replace("{subdomain}", $subdomain, $json);
+        echo $json;
+    } else {
+        $json = str_replace("textarea", "text-area", $json);
+        echo "<form method=\"POST\">";
+            echo "<textarea name='manifest'>" . $json . "</textarea>";
+            echo "<input type='submit' value='Save'>";
+        echo "</form>";
+    }
 } else {
     include "words.php";
     $random = rand(1000, 9999);
