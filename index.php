@@ -51,7 +51,8 @@ if($subdomain) {
     }
 } else {
     $random = rand(1000, 9999);
-    $domain = "http://" . $animals[rand(0, count($animals) -1)] . $random . ".testmanifest.com";
+    $subdomain = $animals[rand(0, count($animals) -1)] . $random;
+    $domain = "http://" . $subdomain . ".testmanifest.com";
     $manifest = $domain . "/manifest.webapp";
     $output = "template_main.php";
 }
