@@ -47,6 +47,7 @@ if($subdomain) {
 
     ?>
         <button id="install">Install!</button>
+        <script src="https://myapps.mozillalabs.com/jsapi/include.js"></script>
         <script>
         document.getElementById('install').onclick = function() {
             navigator.mozApps.install("http://<?=$subdomain?>.testmanifest.com/manifest.webapp");
