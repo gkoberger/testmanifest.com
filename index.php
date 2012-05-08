@@ -10,6 +10,15 @@ if($subdomain) {
 
 // Output a basic manifest
 if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $subdomain) {
+    if(!empty($_POST)) {
+        $myFile = "manifests/" . $_POST['subdomain_base'] . ".json";
+        $fh = fopen($myFile, 'w') or die("can't open file");
+        $stringData = $_POST['manifest'];
+        fwrite($fh, $stringData);
+        fclose($fh);
+        header("Location: /manifest.webapp");
+    }
+
     if(strpos($_SERVER["HTTP_USER_AGENT"], "Python") !== false) {
         header("Content-Type: application/x-web-app-manifest+json");
     }
@@ -25,16 +34,11 @@ if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $
         'default_locale'=>'en');
 
     echo "<form method=\"POST\">";
-    echo "<textarea>" .indent(json_encode($data)) . "</textarea>";
-    echo "<input type='submit' value='Save'>";
+        echo "<textarea name='manifest'>" .indent(json_encode($data)) . "</textarea>";
+        echo "<input type='submit' value='Save'>";
     echo "</form>";
 
     /*
-    $myFile = $_POST['subdomain'] . ".json";
-    $fh = fopen($myFile, 'w') or die("can't open file");
-    $stringData = json_encode($_SERVER);
-    fwrite($fh, $stringData);
-    fclose($fh);
      */
 } else {
     include "words.php";
