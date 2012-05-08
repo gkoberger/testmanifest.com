@@ -22,9 +22,12 @@ if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $
 <div style="text-align: center;">
     <h1>Your random manifest is&hellip;</h1>
     <input type="text" id="thingy" value="<?= $manifest ?>"><br>
-    (Or, just use any subdomain)
+    (Or, just use any subdomain &middot; <a href="/">get another</a>)
 </div>
 <style>
+    body {
+        font-family: helvetica, arial;
+    }
     input {
         border: 1px solid #BBBBBB;
         border-radius: 5px 5px 5px 5px;
