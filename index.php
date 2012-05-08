@@ -1,4 +1,6 @@
 <?php
+include "indent.php";
+
 // First, split it up and get the root
 $subdomain = $_GET['subdomain'];
 if($subdomain) {
@@ -18,11 +20,11 @@ if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $
         'icons'=>array('16'=>'http://testmanifest.com/icon-16.png',
                        '48'=>'http://testmanifest.com/icon-48.png',
                        '128'=>'http://testmanifest.com/icon-128.png'),
-        'installs_allowed_from'=>array('http://marketplace.mozilla.org'),
+        'installs_allowed_from'=>array('https://marketplace.mozilla.org'),
         'developer'=>array('name'=>'Gregory Koberger', 'url'=>'http://gkoberger.net'),
         'default_locale'=>'en');
 
-    echo json_encode($data);
+    echo indent(json_encode($data));
 
     /*
     $myFile = $_POST['subdomain'] . ".json";
