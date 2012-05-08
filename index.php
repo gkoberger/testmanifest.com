@@ -49,8 +49,10 @@ if(($_GET['file'] == "manifest.webapp" || $_GET['file'] == "manifest.json") && $
     } else {
         $json = str_replace("textarea", "text-area", $json);
         echo "<form method=\"POST\">";
-            echo "<textarea name='manifest'>" . $json . "</textarea>";
-            echo "<input type='submit' value='Save'>";
+        echo "<input type='submit' value='Save'><br>";
+        echo "<textarea name='manifest' style='height: 400px; width: 600px; border: 1px solid #ccc;'>";
+        echo $json . "</textarea>";
+        echo "<br><input type='submit' value='Save'>";
         echo "</form>";
     }
 } else {
