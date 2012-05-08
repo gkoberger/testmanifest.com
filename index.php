@@ -31,7 +31,7 @@ if($subdomain) {
         $json = indent(json_encode($data));
     }
 
-    if(preg_match("/(.*)\.(webapp|json)^/", $_GET['file'])) {
+    if(preg_match("/(.*)\.(webapp|json)$/", $_GET['file'])) {
         header("Content-Type: application/x-web-app-manifest+json");
         $json = str_replace("{subdomain}", $subdomain, $json);
         echo $json;
