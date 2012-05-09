@@ -111,6 +111,7 @@
         }
     </style>
     <script src="https://myapps.mozillalabs.com/jsapi/include.js"></script>
+    <script src="https://browserid.org/include.js" type="text/javascript"></script>
   </head>
   <body id="home">
 

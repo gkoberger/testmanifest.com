@@ -11,6 +11,14 @@
     <li>http://<?= $subdomain_base ?>-<span>&lt;anything&gt;</span>.testmanifest.com</li>
     </ul>
     <p>Subdomains are namespaced. Using a dash will allow you to serve manifests from different URLs while maintaining the manifest of the namespace.</p>
+
+    <?php
+    if($subdomain == "gkoberger") {
+    <a href="#" id="browserid" title="Sign-in with BrowserID">
+      <img src="/images/sign_in_blue.png" alt="Sign in">
+    </a>
+    }
+?>
 </div>
 
 <form method="POST">
