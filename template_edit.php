@@ -14,7 +14,7 @@
 </div>
 
 <form method="POST">
-    <input type="text" id="thingy" value="http://<?= $subdomain ?>.testmanifest.com">
+    <input type="text" id="thingy" value="http://<?= $subdomain ?>.testmanifest.com/manifest.webapp">
     <br>
     <br>
 
