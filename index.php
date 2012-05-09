@@ -10,10 +10,14 @@ if($subdomain) {
 }
 
 // Output a basic manifest
+if($_GET['file'] == "login") {
+       include "login.php";
+       exit();
+}
 if($subdomain) {
     // Get the JSON
     $filename = "manifests/" . $subdomain_base . ".json";
-    if(file_exists($filename)) {
+    if(file_exists($filename) && filesize($filename) > 0) {
         $fh = fopen($filename, 'r');
         $json = fread($fh, filesize($filename));
         fclose($fh);

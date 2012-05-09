@@ -3,7 +3,7 @@
     $url = 'https://browserid.org/verify';
     $fields = array(
                 'assertion'=>$_REQUEST['assertion'],
-                'audience'=>'http://testmanifest.com'
+                'audience'=>'http://' . $subdomain . '.testmanifest.com'
             );
 
     //url-ify the data for the POST
@@ -17,22 +17,20 @@
     curl_setopt($ch,CURLOPT_URL,$url);
     curl_setopt($ch,CURLOPT_POST,count($fields));
     curl_setopt($ch,CURLOPT_POSTFIELDS,$fields_string);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
     //execute post
     $result = curl_exec($ch);
-    echo $result;
-
-    $data = json_decode($result);
+    $data = json_decode($result, true);
     $session = md5($data['expires'] . time() . rand(0,1000));
 
     if($data['status'] == "okay") {
-        $myFile = "sessions/" . $session . ".data";
-        $fh = fopen($myFile, 'w') or die("can't open file");
+        $file = "sessions/" . $session . ".data";
+        $fh = fopen($file, 'w') or die("can't open file");
         $stringData = $data['email'];
         fwrite($fh, $stringData);
         fclose($fh);
-        echo "Setting cookie!";
-        setcookie("browserid", $session);
+        setcookie("browserid", $session, time()+3600, "", ".testmanifest.com");
     }
 
     //close connection

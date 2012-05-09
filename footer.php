@@ -15,12 +15,22 @@
         });
     });
 
+    function loggedIn(res) {
+        $('#logged-out').hide();
+        $('#logged-in').fadeIn();
+    }
+
+    function loggedOut(res) {
+        $('#logged-in').hide();
+        $('#logged-out').fadeIn();
+    }
+
     function gotAssertion(assertion) {
       // got an assertion, now send it up to the server for verification
       if (assertion !== null) {
         $.ajax({
           type: 'POST',
-          url: 'login.php',
+          url: '/login',
           data: { assertion: assertion },
           success: function(res, status, xhr) {
             if (res === null) {}//loggedOut();
@@ -31,12 +41,8 @@
           }
         });
       } else {
-        //loggedOut();
+        loggedOut();
       }
-    }
-
-    function loggedin(res) {
-        console.log(res);
     }
     </script>
 

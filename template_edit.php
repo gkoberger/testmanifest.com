@@ -15,9 +15,15 @@
     <?php
     if($subdomain == "gkoberger") {
 ?>
-    <a href="#" id="browserid" title="Sign-in with BrowserID">
-      <img src="/images/sign_in_blue.png" alt="Sign in">
-    </a>
+    <div id="logged-in" style="display: none;">
+        <input type="checkbox"> Lock this?
+        <br>Locking means only you will be able to edit this.
+    </div>
+    <div id="logged-out">
+        <a href="#" id="browserid" title="Sign-in with BrowserID">
+          <img src="/images/sign_in_blue.png" alt="Sign in">
+        </a>
+    </div>
 <?php
     }
 ?>

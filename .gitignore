@@ -1,2 +1,4 @@
 *.swp
 manifests/*.json
+sessions/*.data
+
