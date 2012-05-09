@@ -3,6 +3,7 @@
     <hr>
     <p>If you update the manifest, it will also be available at any of the following subdomains:</p>
     <ul>
+    <li>http://<?= $subdomain_base ?>.testmanifest.com</li>
     <li>http://<?= $subdomain_base ?>-<span>test</span>.testmanifest.com</li>
     <li>http://<?= $subdomain_base ?>-<span>1</span>.testmanifest.com</li>
     <li>http://<?= $subdomain_base ?>-<span>2</span>.testmanifest.com</li>
