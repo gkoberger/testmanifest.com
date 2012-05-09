@@ -68,12 +68,23 @@
         form {
             padding-top: 25px;
             margin-left: 350px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            padding-right: 1em;
+        }
+        form input {
+            max-width: 700px;
+            width: 100%;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
         }
         textarea {
+            border: 1px solid #BBBBBB;
+            border-radius: 5px;
+            box-shadow: 0 3px #EEEEEE inset;
             height: 400px;
             max-width: 700px;
             width: 100%;
-            border: 1px solid #ccc;
             padding: 1em;
             -moz-box-sizing: border-box;
             -webkit-box-sizing: border-box;

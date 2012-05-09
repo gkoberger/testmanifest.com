@@ -13,6 +13,10 @@
 </div>
 
 <form method="POST">
+    <input type="text" id="thingy" value="http://<?= $subdomain ?>.testmanifest.com">
+    <br>
+    <br>
+
     <button type='submit'>Save</button>
 <br>
     <textarea name='manifest'><?= $json ?></textarea>

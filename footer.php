@@ -5,6 +5,8 @@
             navigator.mozApps.install('http://<?= $subdomain ?>.testmanifest.com/manifest.webapp');
             return false;
         };
+        document.getElementById('thingy').focus();
+        document.getElementById('thingy').select();
     };
     </script>
 

@@ -9,7 +9,3 @@
     Absolutely any subdomain will work
     </div>
 </div>
-<script>
-    document.getElementById('thingy').focus();
-    document.getElementById('thingy').select();
-</script>
