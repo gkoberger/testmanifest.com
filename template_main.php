@@ -9,3 +9,9 @@
     Absolutely any subdomain will work
     </div>
 </div>
+
+<? if($_GET['test']) { ?>
+<a href="#" id="browserid" title="Sign-in with BrowserID">
+  <img src="/images/sign_in_blue.png" alt="Sign in">
+</a>
+<? } ?>
