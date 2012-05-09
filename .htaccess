@@ -15,5 +15,4 @@ RewriteCond %{HTTP_HOST} !^(www\.)?testmanifest\.com$ [NC]
 RewriteCond %{HTTP_HOST} ^(www\.)?([^\.]+)\.testmanifest\.com$ [NC]
 
 #RewriteRule ^(.*)$ subdomains/%2/$1 [QSA,L]
-RewriteRule ^login.php$ login.php [QSA,L]
 RewriteRule ^(.*)$ index.php?subdomain=%2&file=$1 [QSA,L]
