@@ -30,6 +30,7 @@ if($subdomain) {
             'default_locale'=>'en');
 
         $json = indent(json_encode($data));
+        $json = str_replace("\/", "/", $json);
     }
 
     if(preg_match("/(.*)\.(webapp|json)$/", $_GET['file'])) {
