@@ -23,9 +23,10 @@
     ?>
     <div id="logged-in" class="<?= $user ? '' : 'hide' ?>">
     <input type="checkbox" <?= $locked ? "checked='checked'" : "" ?> id="lock"> <label for="lock">Lock this manifest?</label>
-    <span id="lock_current" class="locked">This manifest is currently locked.</span>
 
     <p>Locking means only you will be able to edit this manifest.</p>
+
+    <span id="lock_current" class="<?= $locked ? '' : 'un' ?>locked">This manifest is currently <?= $locked ? '' : 'un' ?>locked.</span>
     </div>
     <div id="logged-out" class="<?= !$user ? '' : 'hide' ?>">
         <a href="#" id="browserid" title="Sign-in with BrowserID">
