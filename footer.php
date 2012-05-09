@@ -20,7 +20,7 @@
       if (assertion !== null) {
         $.ajax({
           type: 'POST',
-          url: 'http://testmanifest.com/login.php',
+          url: 'login.php',
           data: { assertion: assertion },
           success: function(res, status, xhr) {
             if (res === null) {}//loggedOut();
