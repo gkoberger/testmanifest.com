@@ -7,7 +7,7 @@
         body {
             font-family: helvetica, arial;
         }
-        input {
+        #thingy {
             border: 1px solid #BBBBBB;
             border-radius: 5px 5px 5px 5px;
             box-shadow: 0 3px #EEEEEE inset;
@@ -112,6 +112,26 @@
             padding: 10px 10px 12px;
             text-shadow: -1px -1px rgba(0, 0, 0, 0.5);
             width: 100%;
+        }
+        #logged-in label {
+            color: #000000;
+            font-size: 0.8em;
+        }
+        .locked {
+            background-image: url('http://testmanifest.com/imgs/lock.png');
+            background-repeat: no-repeat;
+            padding-left: 25px;
+            font-size: 0.8em;
+        }
+        span.locked, span.unlocked {
+            color: #666666;
+            display: block;
+            font-size: 0.7em;
+            margin-left: 2px;
+            margin-top: 2px;
+            min-height: 16px;
+            padding-left: 25px;
+            padding-top: 3px;
         }
     </style>
     <script src="https://myapps.mozillalabs.com/jsapi/include.js"></script>

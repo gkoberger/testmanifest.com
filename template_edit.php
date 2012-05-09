@@ -18,12 +18,13 @@
     <?php
     if($subdomain == "gkoberger" || $subdomain == "gkoberger2" || $subdomain == "gkoberger3") {
         if($locked && $locked != $user) {
-            echo "<p><img src='imgs/lock.png'> ";
-            echo "This manifest has been locked. This means only the person who locked it may edit it.</p>";
+            echo "<p class='locked'>This manifest has been locked. This means only the person who locked it may edit it.</p>";
         } else {
     ?>
     <div id="logged-in" class="<?= $user ? '' : 'hide' ?>">
-    <input type="checkbox" <?= $locked ? "checked='checked'" : "" ?>> Lock this?
+    <input type="checkbox" <?= $locked ? "checked='checked'" : "" ?> id="lock"> <label for="lock">Lock this manifest?</label>
+    <span id="lock_current" class="locked">This manifest is currently locked.</span>
+
     <p>Locking means only you will be able to edit this manifest.</p>
     </div>
     <div id="logged-out" class="<?= !$user ? '' : 'hide' ?>">
