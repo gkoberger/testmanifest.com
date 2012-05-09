@@ -40,10 +40,12 @@ if($_GET['file'] == "login") {
     include "lock.php";
     exit();
 } elseif($subdomain && $_GET['file'] == "lock") {
+    $error = false;
     function error($e) {
-        echo $e;
+        echo "<div class='error'><b>Error:</b> $e</div>";
         exit();
     }
+
     if(!$user) error('You are not logged in');
     if($_POST['action'] == "lock") {
         if($locked) error('This is already locked');
@@ -84,10 +86,14 @@ if($subdomain) {
         exit();
     } else {
         if(!empty($_POST)) {
-            $file = "manifests/" . $subdomain_base . ".json";
-            writefile($file, $_POST['manifest']);
-
-            header("Location: /");
+            if(!$locked || ($locked == $user)) {
+                $file = "manifests/" . $subdomain_base . ".json";
+                writefile($file, $_POST['manifest']);
+                header("Location: /");
+            } else {
+                echo "This manifest is locked by someone other than you.";
+                exit();
+            }
         }
         $output = "template_edit.php";
         $json = str_replace("textarea", "text-area", $json);

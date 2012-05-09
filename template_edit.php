@@ -25,14 +25,16 @@
 <? } ?>
 </div>
 
-<form method="POST">
+<form method="POST" class="is_<?= $locked && $locked != $user ? '' : 'un' ?>locked">
     <input type="text" id="thingy" value="http://<?= $subdomain ?>.testmanifest.com/manifest.webapp">
     <br>
     <br>
 
     <button type='submit'>Save</button>
+    <p class="locked">This manifest can't be saved because it is locked by someone other than you.</p>
 <br>
     <textarea name='manifest'><?= $json ?></textarea>
     <br>
     <button type='submit'>Save</button>
+    <p class="locked">This manifest can't be saved because it is locked by someone other than you.</p>
 </form>

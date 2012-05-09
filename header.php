@@ -117,10 +117,14 @@
             color: #000000;
             font-size: 0.8em;
         }
-        #sidebar .locked, #sidebar .unlocked {
+        #home .locked, #home .unlocked {
             background-repeat: no-repeat;
             padding-left: 25px;
             font-size: 0.8em;
+            min-height: 16px;
+        }
+        #sidebar .error {
+            color: red;
         }
         .unlocked {
             background-image: url('http://testmanifest.com/imgs/lock_open.png');
@@ -134,7 +138,6 @@
             font-size: 0.7em;
             margin-left: 2px;
             margin-top: 2px;
-            min-height: 16px;
             padding-left: 25px;
             padding-top: 3px;
         }
@@ -145,6 +148,17 @@
             font-size: 0.9em;
             padding-bottom: 6px;
             text-shadow: 1px 1px #FFFFFF;
+        }
+
+        .is_locked button {
+            display: none;
+        }
+        .is_locked textarea {
+            color: #555;
+            background-color: #eee;
+        }
+        .is_unlocked .locked {
+            display: none;
         }
     </style>
     <script src="https://myapps.mozillalabs.com/jsapi/include.js"></script>

@@ -19,6 +19,7 @@
         $('#locking').hide();
         $('#locking').html(res);
         $('#locking').fadeIn();
+        updateLoggedin();
     }
 
     function loggedOut(res) {
@@ -34,9 +35,16 @@
                 $this.attr('checked', !$this.attr('checked'));
             } else {
                 $('#locking').html(d);
+                updateLoggedin();
             }
         });
     });
+
+    function updateLoggedin() {
+        if($('#locking').find('.lock-input').length) {
+            $('.is_locked').removeClass('is_locked').addClass('is_unlocked');
+        }
+    }
 
     function gotAssertion(assertion) {
       // got an assertion, now send it up to the server for verification
