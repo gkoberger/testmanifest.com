@@ -30,7 +30,7 @@
         $stringData = $data['email'];
         fwrite($fh, $stringData);
         fclose($fh);
-        setcookie("browserid", $session, time()+3600, "", ".testmanifest.com");
+        setcookie("browserid", $session, time()+3600, "", "testmanifest.com");
     }
 
     //close connection
