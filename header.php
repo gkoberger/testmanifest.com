@@ -117,11 +117,16 @@
             color: #000000;
             font-size: 0.8em;
         }
-        .locked {
-            background-image: url('http://testmanifest.com/imgs/lock.png');
+        #sidebar .locked, #sidebar .unlocked {
             background-repeat: no-repeat;
             padding-left: 25px;
             font-size: 0.8em;
+        }
+        .unlocked {
+            background-image: url('http://testmanifest.com/imgs/lock_open.png');
+        }
+        .locked {
+            background-image: url('http://testmanifest.com/imgs/lock.png');
         }
         span.locked, span.unlocked {
             color: #666666;
@@ -132,6 +137,14 @@
             min-height: 16px;
             padding-left: 25px;
             padding-top: 3px;
+        }
+
+        #sidebar strong {
+            color: #000000;
+            display: block;
+            font-size: 0.9em;
+            padding-bottom: 6px;
+            text-shadow: 1px 1px #FFFFFF;
         }
     </style>
     <script src="https://myapps.mozillalabs.com/jsapi/include.js"></script>

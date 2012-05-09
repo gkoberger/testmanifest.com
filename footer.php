@@ -27,13 +27,17 @@
 
     $('#logged-in input').change(function() {
         var $this = $(this);
-        $.post('/lock', {'action': ($this.attr('checked') ? '' : 'un') + 'lock'}, function(d) {
+        var action = ($this.attr('checked') ? '' : 'un') + 'lock';
+        $.post('/lock', {'action': action}, function(d) {
             var json = $.parseJSON(d);
             if(json.error) {
                 alert(json.error);
+                $this.attr('checked', !$this.attr('checked'));
             } else {
                 // success!
                 alert('Success!');
+                $('#lock_current').attr('class', action+'ed');
+                $('#lock_current').text('This manifest is currently '+action+'ed.');
             }
         });
     });
