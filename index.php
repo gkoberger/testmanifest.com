@@ -49,7 +49,7 @@ if($subdomain) {
             $stringData = $_POST['manifest'];
             fwrite($fh, $stringData);
             fclose($fh);
-            header("Location: /manifest.webapp");
+            header("Location: /");
         }
         $output = "template_edit.php";
         $json = str_replace("textarea", "text-area", $json);
