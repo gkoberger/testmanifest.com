@@ -14,9 +14,11 @@
 
     <?php
     if($subdomain == "gkoberger") {
+?>
     <a href="#" id="browserid" title="Sign-in with BrowserID">
       <img src="/images/sign_in_blue.png" alt="Sign in">
     </a>
+<?php
     }
 ?>
 </div>
