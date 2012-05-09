@@ -25,6 +25,19 @@
         $('#logged-out').fadeIn();
     }
 
+    $('#logged-in input').change(function() {
+        var $this = $(this);
+        $.post('/lock', {'action': ($this.attr('checked') ? '' : 'un') + 'lock'}, function(d) {
+            var json = $.parseJSON(d);
+            if(json.error) {
+                alert(json.error);
+            } else {
+                // success!
+                alert('Success!');
+            }
+        });
+    });
+
     function gotAssertion(assertion) {
       // got an assertion, now send it up to the server for verification
       if (assertion !== null) {

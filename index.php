@@ -18,14 +18,43 @@ function openfile($filename) {
     }
     return false;
 }
+function writefile($filename, $data) {
+    $fh = fopen($filename, 'w') or die("can't open file");
+    fwrite($fh, $data);
+    fclose($fh);
+}
 
-$user = openfile();
+$user = false;
+if($_COOKIE['browserid']) {
+    $user = trim(openfile('sessions/' . $_COOKIE['browserid'] . '.data'));
+}
+
+if($subdomain) {
+    $file = "locks/".$subdomain.".lock";
+    $locked = trim(openfile($file));
+}
 
 // Output a basic manifest
 if($_GET['file'] == "login") {
-       include "login.php";
-       exit();
+    include "login.php";
+    exit();
+} elseif($subdomain && $_GET['file'] == "lock") {
+    function error($e) {
+        echo '{"error": "'.$e.'"}';
+        exit();
+    }
+    if(!$user) error('You are not logged in');
+    if($_POST['action'] == "lock") {
+        if($locked) error('This is already locked');
+        writefile($file, $user);
+    } elseif($_POST['action'] == "unlock") {
+        if($locked != $user) error('You do not own this manifest');
+        unlink($file);
+    }
+    echo '{"success": "1"}';
+    exit();
 }
+
 if($subdomain) {
     // Get the JSON
     $filename = "manifests/" . $subdomain_base . ".json";
@@ -52,11 +81,9 @@ if($subdomain) {
         exit();
     } else {
         if(!empty($_POST)) {
-            $myFile = "manifests/" . $subdomain_base . ".json";
-            $fh = fopen($myFile, 'w') or die("can't open file");
-            $stringData = $_POST['manifest'];
-            fwrite($fh, $stringData);
-            fclose($fh);
+            $file = "manifests/" . $subdomain_base . ".json";
+            writefile($file, $_POST['manifest']);
+
             header("Location: /");
         }
         $output = "template_edit.php";
