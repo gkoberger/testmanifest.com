@@ -16,28 +16,24 @@
     });
 
     function loggedIn(res) {
-        $('#logged-out').hide();
-        $('#logged-in').fadeIn();
+        $('#locking').hide();
+        $('#locking').html(res);
+        $('#locking').fadeIn();
     }
 
     function loggedOut(res) {
-        $('#logged-in').hide();
-        $('#logged-out').fadeIn();
+        alert('logged out!');
     }
 
-    $('#logged-in input').change(function() {
+    $('#locking').delegate('.lock-input', 'change', function() {
         var $this = $(this);
         var action = ($this.attr('checked') ? '' : 'un') + 'lock';
         $.post('/lock', {'action': action}, function(d) {
-            var json = $.parseJSON(d);
-            if(json.error) {
+            if(false && json.error) {
                 alert(json.error);
                 $this.attr('checked', !$this.attr('checked'));
             } else {
-                // success!
-                alert('Success!');
-                $('#lock_current').attr('class', action+'ed');
-                $('#lock_current').text('This manifest is currently '+action+'ed.');
+                $('#locking').html(d);
             }
         });
     });

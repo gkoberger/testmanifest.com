@@ -37,21 +37,24 @@ if($subdomain) {
 // Output a basic manifest
 if($_GET['file'] == "login") {
     include "login.php";
+    include "lock.php";
     exit();
 } elseif($subdomain && $_GET['file'] == "lock") {
     function error($e) {
-        echo '{"error": "'.$e.'"}';
+        echo $e;
         exit();
     }
     if(!$user) error('You are not logged in');
     if($_POST['action'] == "lock") {
         if($locked) error('This is already locked');
         writefile($file, $user);
+        $locked = $user;
     } elseif($_POST['action'] == "unlock") {
         if($locked != $user) error('You do not own this manifest');
         unlink($file);
+        $locked = false;
     }
-    echo '{"success": "1"}';
+    include "lock.php";
     exit();
 }
 

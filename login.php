@@ -31,6 +31,7 @@
         fwrite($fh, $stringData);
         fclose($fh);
         setcookie("browserid", $session, time()+3600, "", "testmanifest.com");
+        $user = $data['email'];
     }
 
     //close connection

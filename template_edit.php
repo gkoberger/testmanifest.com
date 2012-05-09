@@ -12,34 +12,17 @@
     </ul>
     <p>Subdomains are namespaced. Using a dash will allow you to serve manifests from different URLs while maintaining the manifest of the namespace.</p>
 
-    <hr>
-    <strong>Manifest Locking</strong>
 
     <?php
     if($subdomain == "gkoberger" || $subdomain == "gkoberger2" || $subdomain == "gkoberger3") {
-        if($locked && $locked != $user) {
-            echo "<p class='locked'>This manifest has been locked. This means only the person who locked it may edit it.</p>";
-        } else {
-    ?>
-    <div id="logged-in" class="<?= $user ? '' : 'hide' ?>">
-        <input type="checkbox" <?= $locked ? "checked='checked'" : "" ?> id="lock"> <label for="lock">Lock this manifest?</label>
-        <p>Locking means only you will be able to edit this manifest.</p>
-        <span id="lock_current" class="<?= $locked ? '' : 'un' ?>locked">This manifest is currently <?= $locked ? '' : 'un' ?>locked.</span>
-    </div>
-<?php
-        }
 ?>
-    <div id="logged-out" class="<?= !$user ? '' : 'hide' ?>">
-        <a href="#" id="browserid" title="Sign-in with BrowserID">
-          <img src="http://testmanifest.com/imgs/sign_in_blue.png" alt="Sign in">
-        </a>
-        <? if(!$locked): ?>
-        <p>Logged in users can lock a manifest so that it can't be edited by other people.</p>
-        <? endif; ?>
+
+    <hr>
+    <strong>Manifest Locking</strong>
+    <div id="locking">
+        <? include "lock.php"; ?>
     </div>
-<?php
-    }
-?>
+<? } ?>
 </div>
 
 <form method="POST">
