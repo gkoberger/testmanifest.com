@@ -28,6 +28,10 @@
              padding: 0pt;
         }
 
+        .hide {
+            display: none;
+        }
+
         #sidebar {
              -moz-box-sizing: border-box;
              -webkit-box-sizing: border-box;

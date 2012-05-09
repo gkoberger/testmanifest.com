@@ -15,11 +15,13 @@
     <?php
     if($subdomain == "gkoberger") {
 ?>
-    <div id="logged-in" style="display: none;">
+<?= $user ?>!!!
+<br>
+    <div id="logged-in" class="<?= $user ? '' : 'hide' ?>">
         <input type="checkbox"> Lock this?
         <br>Locking means only you will be able to edit this.
     </div>
-    <div id="logged-out">
+    <div id="logged-out" class="<?= !$user ? '' : 'hide' ?>">
         <a href="#" id="browserid" title="Sign-in with BrowserID">
           <img src="/images/sign_in_blue.png" alt="Sign in">
         </a>
