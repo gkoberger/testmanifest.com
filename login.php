@@ -20,8 +20,20 @@
 
     //execute post
     $result = curl_exec($ch);
-
     echo $result;
+
+    $data = json_decode($result);
+    $session = md5($data['expires'] . time() . rand(0,1000));
+
+    if($data['status'] == "okay") {
+        $myFile = "sessions/" . $session . ".data";
+        $fh = fopen($myFile, 'w') or die("can't open file");
+        $stringData = $data['email'];
+        fwrite($fh, $stringData);
+        fclose($fh);
+        echo "Setting cookie!";
+        setcookie("browserid", $session);
+    }
 
     //close connection
     curl_close($ch);
