@@ -76,7 +76,7 @@
             -webkit-box-sizing: border-box;
             padding-right: 1em;
         }
-        form input {
+        form #thingy {
             max-width: 700px;
             width: 100%;
             -moz-box-sizing: border-box;
@@ -92,6 +92,7 @@
             padding: 1em;
             -moz-box-sizing: border-box;
             -webkit-box-sizing: border-box;
+            display: block;
         }
         #sidebar button:active {
             position: relative;
@@ -125,6 +126,10 @@
         }
         #sidebar .error {
             color: red;
+        }
+        form .locked {
+            margin: 0;
+            padding-top: 3px;
         }
         .unlocked {
             background-image: url('http://testmanifest.com/imgs/lock_open.png');
