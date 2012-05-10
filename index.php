@@ -35,7 +35,10 @@ if($subdomain) {
 }
 
 // Output a basic manifest
-if($_GET['file'] == "login") {
+if($_GET['file'] == "logout") {
+    setcookie("browserid", "", time() - 3600, "", "testmanifest.com");
+    header("Location: /");
+} elseif($_GET['file'] == "login") {
     include "login.php";
     include "lock.php";
     exit();

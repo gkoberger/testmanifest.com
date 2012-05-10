@@ -19,3 +19,11 @@
     </span>
     <p>Locking means only you will be able to edit this manifest.</p>
 <? endif ?>
+
+<? if($user): ?>
+<hr>
+<p>
+Logged in as <?= $user ?> (<a href="/logout">logout</a>)
+</p>
+<? endif ?>
+
