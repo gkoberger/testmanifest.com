@@ -14,6 +14,7 @@
             padding: 8px;
             width: 500px;
             text-align: center;
+            margin-bottom: 1em;
         }
         a, a:visited {
             color: #000;
@@ -58,6 +59,7 @@
              border-style: none none solid;
              border-width: 0pt 0pt 1px;
              height: 2px;
+             margin: 1em 0;
         }
 
         #sidebar ul li span {
@@ -81,6 +83,7 @@
             width: 100%;
             -moz-box-sizing: border-box;
             -webkit-box-sizing: border-box;
+            margin-bottom: 0;
         }
         textarea {
             border: 1px solid #BBBBBB;
