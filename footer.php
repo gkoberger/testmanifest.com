@@ -3,6 +3,10 @@
     $(function() {
         $('#install').click(function(e) {
             e.preventDefault();
+            if(!navigator.mozApps) {
+                alert("Your browser doesn't support app installation. Try Firefox Nightly.");
+                return;
+            }
             navigator.mozApps.install('http://<?= $subdomain ?>.testmanifest.com/manifest.webapp');
         });
         $('#thingy')[0].focus();
