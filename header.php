@@ -66,7 +66,7 @@
 
         #sidebar p {
              color: #666666;
-             font-size: 0.9em;
+             font-size: 0.8em;
         }
 
         form {
