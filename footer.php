@@ -26,17 +26,15 @@
         alert('logged out!');
     }
 
-    $('#locking').delegate('.lock-input', 'change', function() {
-        var $this = $(this);
-        var action = ($this.attr('checked') ? '' : 'un') + 'lock';
+    $('#locking').delegate('.lock-input', 'click', function(e) {
+        e.preventDefault();
+
+        var $this = $(this),
+            action = $this.attr('data-action');
+
         $.post('/lock', {'action': action}, function(d) {
-            if(false && json.error) {
-                alert(json.error);
-                $this.attr('checked', !$this.attr('checked'));
-            } else {
-                $('#locking').html(d);
-                updateLoggedin();
-            }
+            $('#locking').html(d);
+            updateLoggedin();
         });
     });
 
