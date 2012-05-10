@@ -30,8 +30,8 @@ if($_COOKIE['browserid']) {
 }
 
 if($subdomain) {
-    $file = "locks/".$subdomain.".lock";
-    $locked = trim(openfile($file));
+    $lock_file = "locks/".$subdomain_base.".lock";
+    $locked = trim(openfile($lock_file));
 }
 
 // Output a basic manifest
@@ -52,11 +52,11 @@ if($_GET['file'] == "logout") {
     if(!$user) error('You are not logged in');
     if($_POST['action'] == "lock") {
         if($locked) error('This is already locked');
-        writefile($file, $user);
+        writefile($lock_file, $user);
         $locked = $user;
     } elseif($_POST['action'] == "unlock") {
         if($locked != $user) error('You do not own this manifest');
-        unlink($file);
+        unlink($lock_file);
         $locked = false;
     }
     include "lock.php";
