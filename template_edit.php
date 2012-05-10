@@ -12,17 +12,11 @@
     </ul>
     <p>Subdomains are namespaced. Using a dash will allow you to serve manifests from different URLs while maintaining the manifest of the namespace.</p>
 
-
-    <?php
-    if($subdomain == "gkoberger" || $subdomain == "gkoberger2" || $subdomain == "gkoberger3") {
-?>
-
     <hr>
     <strong>Manifest Locking</strong>
     <div id="locking">
         <? include "lock.php"; ?>
     </div>
-<? } ?>
 </div>
 
 <form method="POST" class="is_<?= $locked && $locked != $user ? '' : 'un' ?>locked">
