@@ -75,8 +75,7 @@ if($subdomain) {
                            '48'=>'http://testmanifest.com/icon-48.png',
                            '128'=>'http://testmanifest.com/icon-128.png'),
             'installs_allowed_from'=>array('*'),
-            'developer'=>array('name'=>'Gregory Koberger', 'url'=>'http://gkoberger.net'),
-            'default_locale'=>'en');
+            'developer'=>array('name'=>'Gregory Koberger', 'url'=>'http://gkoberger.net'));
 
         $json = indent(json_encode($data));
         $json = str_replace("\/", "/", $json);
